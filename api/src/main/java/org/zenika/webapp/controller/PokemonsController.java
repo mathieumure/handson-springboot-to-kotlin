@@ -31,6 +31,11 @@ public class PokemonsController {
         return ResponseEntity.ok(pokemon);
     }
 
+    @GetMapping("/types")
+    public List<String> getPokemonTypes() {
+        return pokemonService.getAllPokemonTypes();
+    }
+
     @GetMapping("/{idPokemon1}/vs/{idPokemon2}")
     public ResponseEntity<Pokemon> fight(@PathVariable String idPokemon1, @PathVariable String idPokemon2) {
         Pokemon pokemon = pokemonService.fight(idPokemon1, idPokemon2);

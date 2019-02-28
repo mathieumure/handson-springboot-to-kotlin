@@ -35,6 +35,14 @@ public class PokemonService {
         return null;
     }
 
+    public List<String> getAllPokemonTypes() {
+        return getAllPokemon().stream()
+                .map(it -> it.getTypes())
+                .flatMap(List::stream)
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
     public Pokemon fight(String idPokemon1, String idPokemon2) {
         Pokemon pokemon1 = getPokemonByIdOrName(idPokemon1);
         Pokemon pokemon2 = getPokemonByIdOrName(idPokemon2);
