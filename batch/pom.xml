@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.zenika</groupId>
-    <artifactId>webapp</artifactId>
+    <artifactId>batch</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>webapp</name>
+    <name>batch</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
