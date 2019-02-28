@@ -2,7 +2,7 @@ package org.zenika.webapp.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.zenika.webapp.entity.Pokemon;
+import org.zenika.core.Pokemon;
 import org.zenika.webapp.service.PokemonService;
 
 import java.util.List;

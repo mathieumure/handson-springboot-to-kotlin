@@ -1,30 +1,27 @@
-package org.zenika.webapp.entity;
+package org.zenika.fetcher;
 
-import javax.persistence.*;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
-public class Pokemon {
+import java.util.List;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+public class PokemonData {
     private Long id;
 
-    @Column(name = "pokemonName")
     private String name;
 
+    @JsonProperty("base_experience")
     private String baseExperience;
 
     private int height;
 
+    @JsonProperty("is_default")
     private boolean isDefault;
 
-    @Column(name = "POKEMON_ORDER")
     private int order;
 
     private int weight;
 
-    private String types;
+    private List<Type> types;
 
     public Long getId() {
         return id;
@@ -82,24 +79,11 @@ public class Pokemon {
         this.weight = weight;
     }
 
-    public String getTypes() {
+    public List<Type> getTypes() {
         return types;
     }
 
-    public void setTypes(String types) {
+    public void setTypes(List<Type> types) {
         this.types = types;
-    }
-
-    public org.zenika.core.Pokemon toPokemon() {
-        org.zenika.core.Pokemon pokemon = new org.zenika.core.Pokemon();
-        pokemon.setId(this.id);
-        pokemon.setName(this.name);
-        pokemon.setBaseExperience(this.baseExperience);
-        pokemon.setDefault(this.isDefault);
-        pokemon.setHeight(this.height);
-        pokemon.setWeight(this.weight);
-        pokemon.setOrder(this.order);
-        pokemon.setTypes(Arrays.asList(this.types.split(",")));
-        return pokemon;
     }
 }

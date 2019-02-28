@@ -1,12 +1,13 @@
 package org.zenika.webapp.service;
 
 import org.springframework.stereotype.Service;
-import org.zenika.webapp.entity.Pokemon;
+import org.zenika.core.Pokemon;
 import org.zenika.webapp.repository.PokemonRepository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 public class PokemonService {
@@ -18,18 +19,18 @@ public class PokemonService {
     }
 
     public List<Pokemon> getAllPokemon() {
-        return pokemonRepository.findAll();
+        return pokemonRepository.findAll().stream().map(pokemon -> pokemon.toPokemon()).collect(Collectors.toList());
     }
 
     public Pokemon getPokemonByIdOrName(String idOrName) {
-        final Optional<Pokemon> pokemonByName = pokemonRepository.findByName(idOrName);
+        final Optional<org.zenika.webapp.entity.Pokemon> pokemonByName = pokemonRepository.findByName(idOrName);
         if (pokemonByName.isPresent()) {
-            return pokemonByName.get();
+            return pokemonByName.get().toPokemon();
         }
 
-        Optional<Pokemon> pokemonById = pokemonRepository.findById(Long.parseLong(idOrName));
+        Optional<org.zenika.webapp.entity.Pokemon> pokemonById = pokemonRepository.findById(Long.parseLong(idOrName));
         if (pokemonById.isPresent()) {
-            return pokemonById.get();
+            return pokemonById.get().toPokemon();
         }
         return null;
     }
