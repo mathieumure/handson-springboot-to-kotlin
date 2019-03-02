@@ -1,7 +1,7 @@
-package org.zenika.webapp.repository;
+package org.zenika.api.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import org.zenika.webapp.entity.Pokemon;
+import org.zenika.api.entity.Pokemon;
 
 import java.util.List;
 import java.util.Optional;

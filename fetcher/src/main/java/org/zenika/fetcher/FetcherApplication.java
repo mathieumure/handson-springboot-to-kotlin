@@ -31,13 +31,6 @@ public class FetcherApplication implements CommandLineRunner {
         SpringApplication.run(FetcherApplication.class, args);
     }
 
-    public interface Pokeapi {
-
-        @RequestLine("GET /api/v2/pokemon/{id}/")
-        PokemonData get(@Param("id") int id);
-
-    }
-
     @Override
     public void run(String... args) throws Exception {
 

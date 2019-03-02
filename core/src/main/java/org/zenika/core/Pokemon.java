@@ -18,6 +18,20 @@ public class Pokemon {
 
     private int weight;
 
+    public Pokemon() {
+    }
+
+    public Pokemon(Pokemon pokemon) {
+        this.id = pokemon.getId();
+        this.name = pokemon.getName();
+        this.baseExperience = pokemon.getBaseExperience();
+        this.isDefault = pokemon.isDefault();
+        this.height = pokemon.getHeight();
+        this.weight = pokemon.getWeight();
+        this.order = pokemon.getOrder();
+        this.types = pokemon.getTypes();
+    }
+
     private List<String> types;
 
     public Long getId() {

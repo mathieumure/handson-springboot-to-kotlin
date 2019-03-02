@@ -1,9 +1,12 @@
-package org.zenika.webapp.service;
+package org.zenika.api.service;
 
 import org.springframework.stereotype.Service;
+import org.zenika.api.client.ArenaApi;
+import org.zenika.core.Battle;
 import org.zenika.core.Pokemon;
-import org.zenika.webapp.repository.PokemonRepository;
+import org.zenika.api.repository.PokemonRepository;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -13,9 +16,11 @@ import java.util.stream.Collectors;
 public class PokemonService {
 
     private PokemonRepository pokemonRepository;
+    private ArenaApi arenaApi;
 
-    public PokemonService(PokemonRepository pokemonRepository) {
+    public PokemonService(PokemonRepository pokemonRepository, ArenaApi arenaApi) {
         this.pokemonRepository = pokemonRepository;
+        this.arenaApi = arenaApi;
     }
 
     public List<Pokemon> getAllPokemon() {
@@ -23,12 +28,12 @@ public class PokemonService {
     }
 
     public Pokemon getPokemonByIdOrName(String idOrName) {
-        final Optional<org.zenika.webapp.entity.Pokemon> pokemonByName = pokemonRepository.findByName(idOrName);
+        final Optional<org.zenika.api.entity.Pokemon> pokemonByName = pokemonRepository.findByName(idOrName);
         if (pokemonByName.isPresent()) {
             return pokemonByName.get().toPokemon();
         }
 
-        Optional<org.zenika.webapp.entity.Pokemon> pokemonById = pokemonRepository.findById(Long.parseLong(idOrName));
+        Optional<org.zenika.api.entity.Pokemon> pokemonById = pokemonRepository.findById(Long.parseLong(idOrName));
         if (pokemonById.isPresent()) {
             return pokemonById.get().toPokemon();
         }
@@ -43,20 +48,17 @@ public class PokemonService {
                 .collect(Collectors.toList());
     }
 
-    public Pokemon fight(String idPokemon1, String idPokemon2) {
+    public Battle fight(String idPokemon1, String idPokemon2) {
         Pokemon pokemon1 = getPokemonByIdOrName(idPokemon1);
         Pokemon pokemon2 = getPokemonByIdOrName(idPokemon2);
 
         if (pokemon1 == null || pokemon2 == null) {
             return null;
         }
+        return arenaApi.fight(Arrays.asList(pokemon1, pokemon2));
+    }
 
-        Random random = new Random();
-        int i = random.nextInt();
-        if (i % 2 == 0) {
-            return pokemon1;
-        } else {
-            return pokemon2;
-        }
+    public Battle getBattle(String id) {
+        return arenaApi.get(id);
     }
 }

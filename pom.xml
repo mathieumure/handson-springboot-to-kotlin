@@ -19,7 +19,7 @@
     <modules>
         <module>core</module>
         <module>api</module>
-        <module>batch</module>
+        <module>arena</module>
         <module>fetcher</module>
     </modules>
 
@@ -36,7 +36,11 @@
                 <artifactId>feign-jackson</artifactId>
                 <version>10.2.0</version>
             </dependency>
-
+            <dependency>
+                <groupId>de.flapdoodle.embed</groupId>
+                <artifactId>de.flapdoodle.embed.mongo</artifactId>
+                <version>2.2.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

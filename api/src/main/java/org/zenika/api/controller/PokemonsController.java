@@ -1,9 +1,10 @@
-package org.zenika.webapp.controller;
+package org.zenika.api.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.zenika.core.Battle;
 import org.zenika.core.Pokemon;
-import org.zenika.webapp.service.PokemonService;
+import org.zenika.api.service.PokemonService;
 
 import java.util.List;
 
@@ -37,11 +38,20 @@ public class PokemonsController {
     }
 
     @GetMapping("/{idPokemon1}/vs/{idPokemon2}")
-    public ResponseEntity<Pokemon> fight(@PathVariable String idPokemon1, @PathVariable String idPokemon2) {
-        Pokemon pokemon = pokemonService.fight(idPokemon1, idPokemon2);
-        if (pokemon == null) {
+    public ResponseEntity<Battle> fight(@PathVariable String idPokemon1, @PathVariable String idPokemon2) {
+        Battle battle = pokemonService.fight(idPokemon1, idPokemon2);
+        if (battle == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(pokemon);
+        return ResponseEntity.ok(battle);
+    }
+
+    @GetMapping("/battle/{id}")
+    public ResponseEntity<Battle> getBattle(@PathVariable String id) {
+        Battle battle = pokemonService.getBattle(id);
+        if (battle == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(battle);
     }
 }

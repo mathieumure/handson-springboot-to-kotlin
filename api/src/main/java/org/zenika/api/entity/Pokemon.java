@@ -1,4 +1,4 @@
-package org.zenika.webapp.entity;
+package org.zenika.api.entity;
 
 import javax.persistence.*;
 import java.util.Arrays;
