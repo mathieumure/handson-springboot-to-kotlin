@@ -12,6 +12,22 @@ in this handson you will start from a maven spring boot application written in j
 - [ ] write TP in a vue-press app
 
 
+# Exercice 1 - refactor core
+
+Ajouter les plugins kotlin-maven-plugin, kotlin-maven-noarg et  kotlin-maven-allopen
+
+Ajouter les dependances kotlin-stdlib-jdk8 et kotlin-test
+
+Transformer la class java Pokemon en class kotlin.
+Ajouter un constructeur qui prend un pokemon en paramètre
+puis transformer fighting pokemon en class
+
+PokemonType
+Battle
+B
+
+
+
 
 
 - api
