@@ -28,3 +28,13 @@ BattleEntity
 Pokemon
 
 La ça doit failed car par de constructeur par défaut -> kotlin-noard
+
+
+- batch
+
+Importer plugin et dependencies
+controller
+batch
+repository
+service
+entity
