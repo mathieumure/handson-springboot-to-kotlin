@@ -9,6 +9,7 @@ open class Pokemon (
         val order: Int ,
         val weight: Int,
         val types: List<String>) {
+
     constructor(pokemon: Pokemon) : this(pokemon.id, pokemon.name, pokemon.baseExperience, pokemon.height,
             pokemon.isDefault, pokemon.order, pokemon.weight, pokemon.types)
 };

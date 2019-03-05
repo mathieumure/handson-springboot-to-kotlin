@@ -21,14 +21,8 @@ enum class PokemonType(val value: String) {
     DARK("dark");
 
     companion object {
-        fun fromValue(value: String): PokemonType? {
-            for (type in PokemonType.values()) {
-                if (type.value.equals(value)) {
-                    return type
-                }
-            }
-            return null
-        }
+        fun fromValue(value: String): PokemonType? =
+                values().firstOrNull { it.value == value }
     }
 
 }
