@@ -9,21 +9,18 @@ class Pokemon(
         var baseExperience: String,
         var height: Int,
         var isDefault: Boolean,
-        @Column(name = "POKEMON_ORDER") var order: Int,
+        @Column(name = "POKEMON_ORDER") var order: Int
         var weight: Int,
         var types: String) {
 
-    fun toPokemon(): org.zenika.core.Pokemon {
-        val pokemon = org.zenika.core.Pokemon()
-        pokemon.id = this.id
-        pokemon.name = this.name
-        pokemon.baseExperience = this.baseExperience
-        pokemon.isDefault = this.isDefault
-        pokemon.height = this.height
-        pokemon.weight = this.weight
-        pokemon.order = this.order
-        pokemon.types = this.types.split(",")
-        return pokemon
+    fun toPokemon(): org.zenika.core.Pokemon = org.zenika.core.Pokemon().apply {
+        id = this@Pokemon.id
+        name = this@Pokemon.name
+        baseExperience = this@Pokemon.baseExperience
+        isDefault = this@Pokemon.isDefault
+        height = this@Pokemon.height
+        weight = this@Pokemon.weight
+        order = this@Pokemon.order
+        types = this@Pokemon.types.split(",")
     }
-
 }

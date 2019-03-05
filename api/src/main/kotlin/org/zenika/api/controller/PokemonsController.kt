@@ -10,27 +10,24 @@ import org.zenika.core.Pokemon
 @RequestMapping("/pokemons")
 class PokemonsController(val pokemonService: PokemonService) {
 
+    private fun <T> T?.wrap(): ResponseEntity<T> =
+            this?.let { ResponseEntity.ok(it) } ?: ResponseEntity.notFound().build()
+
+
     @GetMapping
     fun getAllPokemons(): List<Pokemon> = pokemonService.getAllPokemon()
 
     @GetMapping("/{idOrName}")
-    fun getPokemonById(@PathVariable idOrName: String): ResponseEntity<Pokemon> {
-        val pokemon = pokemonService.getPokemonByIdOrName(idOrName) ?: return ResponseEntity.notFound().build()
-        return ResponseEntity.ok(pokemon)
-    }
+    fun getPokemonById(@PathVariable idOrName: String): ResponseEntity<Pokemon> =
+            pokemonService.getPokemonByIdOrName(idOrName).wrap()
 
     @GetMapping("/types")
     fun getPokemonTypes() : List<String> = pokemonService.getAllPokemonTypes()
 
     @GetMapping("/{idPokemon1}/vs/{idPokemon2}")
-    fun fight(@PathVariable idPokemon1: String, @PathVariable idPokemon2: String): ResponseEntity<Battle> {
-        val battle = pokemonService.fight(idPokemon1, idPokemon2) ?: return ResponseEntity.notFound().build()
-        return ResponseEntity.ok(battle)
-    }
+    fun fight(@PathVariable idPokemon1: String, @PathVariable idPokemon2: String): ResponseEntity<Battle> =
+            pokemonService.fight(idPokemon1, idPokemon2).wrap()
 
     @GetMapping("/battle/{id}")
-    fun getBattle(@PathVariable id: String): ResponseEntity<Battle> {
-        val battle = pokemonService.getBattle(id)
-        return ResponseEntity.ok(battle)
-    }
+    fun getBattle(@PathVariable id: String): ResponseEntity<Battle> = pokemonService.getBattle(id).wrap()
 }

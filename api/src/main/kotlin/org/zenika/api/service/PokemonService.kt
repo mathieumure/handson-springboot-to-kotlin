@@ -13,19 +13,16 @@ class PokemonService(val pokemonRepository: PokemonRepository, val arenaApi: Are
 
     fun getAllPokemon(): List<Pokemon> = pokemonRepository.findAll().map { it.toPokemon() }
 
-    fun getPokemonByIdOrName(idOrName: String): Pokemon? {
-        val pokemonByName = pokemonRepository.findByName(idOrName)
-        if (pokemonByName != null) {
-            return pokemonByName.toPokemon()
-        }
-        return pokemonRepository.findByIdOrNull(idOrName.toLong())?.toPokemon()
-    }
+    fun getPokemonByIdOrName(idOrName: String): Pokemon? =
+            pokemonRepository.findByName(idOrName)?.toPokemon()
+            ?: pokemonRepository.findByIdOrNull(idOrName.toLong())?.toPokemon()
 
     fun getAllPokemonTypes(): List<String> = getAllPokemon().flatMap { it.types }.distinct()
 
     fun fight(idPokemon1: String, idPokemon2: String): Battle? {
         val pokemon1 = getPokemonByIdOrName(idPokemon1)
         val pokemon2 = getPokemonByIdOrName(idPokemon2)
+        if ()
         if (pokemon1 == null && pokemon2 == null) {
             return null
         }
