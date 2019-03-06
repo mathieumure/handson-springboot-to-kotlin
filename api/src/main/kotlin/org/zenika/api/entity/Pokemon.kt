@@ -9,7 +9,7 @@ class Pokemon(
         var baseExperience: String,
         var height: Int,
         var isDefault: Boolean,
-        @Column(name = "POKEMON_ORDER") var order: Int
+        @Column(name = "POKEMON_ORDER") var order: Int,
         var weight: Int,
         var types: String) {
 
