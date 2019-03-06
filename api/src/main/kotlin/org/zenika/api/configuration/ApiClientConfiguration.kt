@@ -1,11 +1,11 @@
-package org.zenika.api.configuration;
+package org.zenika.api.configuration
 
-import feign.Feign;
-import feign.jackson.JacksonDecoder;
-import feign.jackson.JacksonEncoder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.zenika.api.client.ArenaApi;
+import feign.Feign
+import feign.jackson.JacksonDecoder
+import feign.jackson.JacksonEncoder
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import org.zenika.api.client.ArenaApi
 
 @Configuration
 class ApiClientConfiguration {

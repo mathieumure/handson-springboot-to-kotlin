@@ -1,4 +1,4 @@
-package org.zenika.api.controller;
+package org.zenika.api.controller
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
