@@ -10,3 +10,21 @@ in this handson you will start from a maven spring boot application written in j
     - [ ] API => common, web, batch, utils -> extensions, jpa 
     - [ ] split in several package
 - [ ] write TP in a vue-press app
+
+
+
+
+- api
+
+Importer les plugins et artifact maven
+Renommer ApiApplication en class kotlin
+Puis PokemonsController
+PokemonREpostory
+PokemonService
+ArenaApi
+ApiClientConfiguration
+
+BattleEntity
+Pokemon
+
+La ça doit failed car par de constructeur par défaut -> kotlin-noard
