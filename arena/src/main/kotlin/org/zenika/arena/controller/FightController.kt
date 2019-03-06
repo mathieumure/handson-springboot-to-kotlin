@@ -12,12 +12,12 @@ import org.zenika.core.Pokemon
 class FightController(val arenaService: ArenaService) {
 
     @PostMapping
-    fun fight(@RequestBody pokemons: List<Pokemon> ): ResponseEntity<Any> {
+    fun fight(@RequestBody pokemons: List<Pokemon> ): ResponseEntity<Any> =
         if (pokemons.size != 2) {
-            return ResponseEntity.badRequest().body("This is a traditional sport!!! Only 2 pokemons can have a fight")
+            ResponseEntity.badRequest().body("This is a traditional sport!!! Only 2 pokemons can have a fight")
+        } else {
+            ResponseEntity.ok(arenaService.startFight(pokemons))
         }
-        return ResponseEntity.ok(arenaService.startFight(pokemons))
-    }
 
     @GetMapping("/{id}")
     fun get(@PathVariable id: String): BattleEntity = arenaService.getBattle(id)

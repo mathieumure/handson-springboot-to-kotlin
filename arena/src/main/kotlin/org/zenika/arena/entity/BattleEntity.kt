@@ -1,19 +1,18 @@
-package org.zenika.arena.entity;
+package org.zenika.arena.entity
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.TypeAlias;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.zenika.core.Battle;
-import org.zenika.core.FightingPokemon;
+import org.springframework.data.annotation.Id
+import org.springframework.data.annotation.TypeAlias
+import org.springframework.data.mongodb.core.mapping.Document
+import org.zenika.core.Battle
 
 @Document(collection="battle")
 @TypeAlias("battle")
-class BattleEntity(): Battle() {
+class BattleEntity(battle: Battle): Battle() {
 
     @Id
     var id: String? = null
 
-    constructor(battle: Battle) : this() {
+    init {
         super.pokemonA = battle.pokemonA
         super.pokemonB = battle.pokemonB
         super.round = battle.round

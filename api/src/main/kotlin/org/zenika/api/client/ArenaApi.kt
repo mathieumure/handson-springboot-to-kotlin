@@ -1,8 +1,8 @@
-package org.zenika.api.client;
+package org.zenika.api.client
 
-import feign.Headers;
-import feign.Param;
-import feign.RequestLine;
+import feign.Headers
+import feign.Param
+import feign.RequestLine
 import org.zenika.api.entity.BattleEntity
 import org.zenika.core.Pokemon
 

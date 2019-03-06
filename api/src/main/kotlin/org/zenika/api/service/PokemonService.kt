@@ -1,11 +1,11 @@
-package org.zenika.api.service;
+package org.zenika.api.service
 
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.stereotype.Service;
-import org.zenika.api.client.ArenaApi;
-import org.zenika.core.Battle;
-import org.zenika.core.Pokemon;
-import org.zenika.api.repository.PokemonRepository;
+import org.springframework.stereotype.Service
+import org.zenika.api.client.ArenaApi
+import org.zenika.core.Battle
+import org.zenika.core.Pokemon
+import org.zenika.api.repository.PokemonRepository
 
 @Service
 class PokemonService(val pokemonRepository: PokemonRepository, val arenaApi: ArenaApi) {

@@ -1,6 +1,6 @@
-package org.zenika.fetcher;
+package org.zenika.fetcher
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty
 
 data class PokemonData(
     var id: Long,

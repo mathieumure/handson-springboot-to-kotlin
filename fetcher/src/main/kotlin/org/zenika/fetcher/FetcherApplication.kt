@@ -36,39 +36,39 @@ class FetcherApplication: CommandLineRunner {
         }
 
         val pokemons = pokemonsData.map {
-            val pokemon = Pokemon()
-            pokemon.id = it.id
-            pokemon.name = it.name
-            pokemon.baseExperience = it.baseExperience
-            pokemon.height = it.height
-            pokemon.isDefault = it.isDefault
-            pokemon.order = it.order
-            pokemon.weight = it.weight
-            pokemon.types = it.types.map { type -> type.type["name"] }
-            pokemon
+            Pokemon().apply {
+                id = it.id
+                name = it.name
+                baseExperience = it.baseExperience
+                height = it.height
+                isDefault = it.isDefault
+                order = it.order
+                weight = it.weight
+                types = it.types.map { type -> type.type["name"] }
+            }
         }
 
         LOGGER.info("${pokemons.size} pokemons found")
         LOGGER.info("writing to file ")
-        val fileWriter = FileWriter(SQL_FILENAME)
-        val printWriter = PrintWriter(fileWriter)
-        printWriter.println("INSERT INTO POKEMON (ID, POKEMON_NAME, BASE_EXPERIENCE, HEIGHT, IS_DEFAULT, POKEMON_ORDER, WEIGHT, TYPES) values")
+        PrintWriter(FileWriter(SQL_FILENAME)).use {
+            it.println("INSERT INTO POKEMON (ID, POKEMON_NAME, BASE_EXPERIENCE, HEIGHT, IS_DEFAULT, POKEMON_ORDER, WEIGHT, TYPES) values")
 
-        val iterator = pokemons.iterator()
-        while (iterator.hasNext()) {
-            val pokemon = iterator.next()
-            printWriter.printf(
-                    "(%s, '%s', %s, %s, %s, %s, %s, '%s')",
-                    pokemon.id, pokemon.name, pokemon.baseExperience,
-                    pokemon.height, pokemon.isDefault, pokemon.order,
-                    pokemon.weight, pokemon.types.joinToString(","))
-            if (iterator.hasNext()) {
-                printWriter.println(",")
-            } else {
-                printWriter.println("")
+            val iterator = pokemons.iterator()
+            while (iterator.hasNext()) {
+                val pokemon = iterator.next()
+                it.printf(
+                        "(%s, '%s', %s, %s, %s, %s, %s, '%s')",
+                        pokemon.id, pokemon.name, pokemon.baseExperience,
+                        pokemon.height, pokemon.isDefault, pokemon.order,
+                        pokemon.weight, pokemon.types.joinToString(","))
+                if (iterator.hasNext()) {
+                    it.println(",")
+                } else {
+                    it.println("")
+                }
             }
+            it.close()
         }
-        printWriter.close()
     }
 
 }

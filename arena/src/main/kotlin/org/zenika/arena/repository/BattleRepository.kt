@@ -1,7 +1,7 @@
-package org.zenika.arena.repository;
+package org.zenika.arena.repository
 
 import org.springframework.data.mongodb.repository.MongoRepository
-import org.zenika.arena.entity.BattleEntity;
+import org.zenika.arena.entity.BattleEntity
 
 
 interface BattleRepository: MongoRepository<BattleEntity, String> {

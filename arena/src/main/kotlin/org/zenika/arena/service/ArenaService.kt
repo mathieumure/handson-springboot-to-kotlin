@@ -11,9 +11,9 @@ import org.zenika.core.Pokemon
 @Service
 class ArenaService(val battleRepository: BattleRepository) {
 
-    fun startFight(pokemons: List<Pokemon>): BattleEntity {
-        val battle = FightService.startBattle(pokemons[0], pokemons[1])
-        return battleRepository.save(BattleEntity(battle))
+    fun startFight(pokemons: List<Pokemon>): BattleEntity =
+    FightService.startBattle(pokemons[0], pokemons[1]).let {
+        battleRepository.save(BattleEntity(it))
     }
 
     fun getBattle(id: String): BattleEntity = battleRepository.findById(id).get()
