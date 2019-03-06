@@ -8,13 +8,10 @@ import org.springframework.context.annotation.Configuration;
 import org.zenika.api.client.ArenaApi;
 
 @Configuration
-public class ApiClientConfiguration {
-
+class ApiClientConfiguration {
     @Bean
-    public ArenaApi arenaApi() {
-        return Feign.builder()
-                .encoder(new JacksonEncoder())
-                .decoder(new JacksonDecoder())
-                .target(ArenaApi.class, "http://localhost:9000");
-    }
+    fun arenaApi(): ArenaApi = Feign.builder()
+                .encoder(JacksonEncoder())
+                .decoder(JacksonDecoder())
+                .target(ArenaApi::class.java, "http://localhost:9000")
 }
