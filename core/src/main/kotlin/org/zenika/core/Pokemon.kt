@@ -1,15 +1,25 @@
-package org.zenika.core;
+package org.zenika.core
 
-open class Pokemon (
-        val id: Long,
-        val name: String ,
-        val baseExperience: String ,
-        val height: Int ,
-        val isDefault: Boolean ,
-        val order: Int ,
-        val weight: Int,
-        val types: List<String>) {
+open class Pokemon () {
+    var id: Long? = null
+    var name: String? = null
+    var baseExperience: String? = null
+    var height: Int? = null
+    var isDefault: Boolean? = null
+    var order: Int? = null
+    var weight: Int? = null
+    var types: List<String> = mutableListOf()
 
-    constructor(pokemon: Pokemon) : this(pokemon.id, pokemon.name, pokemon.baseExperience, pokemon.height,
-            pokemon.isDefault, pokemon.order, pokemon.weight, pokemon.types)
-};
+    constructor(pokemon: Pokemon): this() {
+        this.apply {
+            id = pokemon.id
+            name = pokemon.name
+            baseExperience = pokemon.baseExperience
+            height = pokemon.height
+            isDefault = pokemon.isDefault
+            order = pokemon.order
+            weight = pokemon.weight
+            types = pokemon.types
+        }
+    }
+}

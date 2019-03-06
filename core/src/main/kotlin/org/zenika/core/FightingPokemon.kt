@@ -1,11 +1,12 @@
-package org.zenika.core;
+package org.zenika.core
 
-class FightingPokemon(pokemon: Pokemon, var life: Int, var fightOrder: Int) : Pokemon(pokemon) {
+class FightingPokemon(var pokemon: Pokemon, var life: Int, var fightOrder: Int) : Pokemon(pokemon) {
 
-    fun isKO(): Boolean = this.life <= 0
+    val isKO: Boolean
+        get() = this.life <= 0
 
-    fun receiveDamage(amount: Int) = {
-        this.life -= amount
+    fun receiveDamage(amount: Int) {
+        this.life = this.life - amount
     }
 
 }

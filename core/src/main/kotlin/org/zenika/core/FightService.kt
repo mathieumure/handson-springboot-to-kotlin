@@ -18,8 +18,8 @@ object FightService {
 
     @JvmStatic
     fun nextRound(battle: Battle) : Battle {
-        val starter = battle.getStarter()
-        val ender = battle.getEnder()
+        val starter = battle.starter
+        val ender = battle.ender
 
         val starterAttackResult = PokemonUtils.getAttackResult(starter, ender)
         ender.receiveDamage(starterAttackResult)

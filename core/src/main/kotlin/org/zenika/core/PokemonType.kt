@@ -1,4 +1,4 @@
-package org.zenika.core;
+package org.zenika.core
 
 enum class PokemonType(val value: String) {
     POISON("poison"),
