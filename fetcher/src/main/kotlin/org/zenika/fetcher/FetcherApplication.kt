@@ -67,7 +67,6 @@ class FetcherApplication: CommandLineRunner {
                     it.println("")
                 }
             }
-            it.close()
         }
     }
 
