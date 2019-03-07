@@ -1,12 +1,27 @@
 # Hands on Spring boot to kotlin
 
-in this handson you will start from a maven spring boot application written in java and step by step, you will migrate to a kotlin application 
+In this handson you will start from a maven spring boot application written in java and step by step, you will migrate to a kotlin application 
 
-## TODO
+Clone or download this repository and follow [the exercices](https://mathieumure.github.io/handson-springboot-to-kotlin/)
 
-- [ ] Soluce
-    - [ ] scaffold java app
-    - [ ] tests
-    - [ ] API => common, web, batch, utils -> extensions, jpa 
-    - [ ] split in several package
-- [ ] write TP in a vue-press app
+## Docs
+
+Docs are build via vuepress from the folder `tps`
+
+In order to run the docs locally, first install the dependencies.
+
+```bash
+yarn
+```
+
+Then launch a live server
+
+```bash
+yarn serve
+```
+
+Or build the app:
+
+```bash
+yarn build
+```

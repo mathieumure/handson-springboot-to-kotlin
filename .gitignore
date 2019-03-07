@@ -23,3 +23,8 @@ target/
 /nbdist/
 /.nb-gradle/
 /build/
+
+
+### docs ###
+/node_modules/
+tps/.vuepress/dist
