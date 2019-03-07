@@ -44,7 +44,7 @@ class FetcherApplication: CommandLineRunner {
                 isDefault = it.isDefault
                 order = it.order
                 weight = it.weight
-                types = it.types.map { type -> type.type["name"] }
+                types = it.types.mapNotNull { type -> type.type["name"] }
             }
         }
 

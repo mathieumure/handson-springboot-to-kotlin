@@ -1,6 +1,6 @@
-package org.zenika.core;
+package org.zenika.core
 
-public enum PokemonType {
+enum class PokemonType(val value: String) {
     POISON("poison"),
     GRASS("grass"),
     FIRE("fire"),
@@ -20,18 +20,9 @@ public enum PokemonType {
     DRAGON("dragon"),
     DARK("dark");
 
-    private String value;
-
-    PokemonType(String value) {
-        this.value = value;
+    companion object {
+        fun fromValue(value: String): PokemonType? =
+                values().firstOrNull { it.value == value }
     }
 
-    public static PokemonType fromValue(String value) {
-        for(PokemonType type : PokemonType.values()) {
-            if (type.value.equalsIgnoreCase(value)) {
-                return type;
-            }
-        }
-        return null;
-    }
 }

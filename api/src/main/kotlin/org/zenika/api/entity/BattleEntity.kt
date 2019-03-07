@@ -1,5 +1,10 @@
 package org.zenika.api.entity
 
-import org.zenika.core.Battle
+import org.zenika.core.BattleStatus
+import org.zenika.core.Pokemon
 
-data class BattleEntity(var id: String): Battle()
+class BattleEntity {
+    lateinit var id: String
+    lateinit var battleStatus: BattleStatus
+    var winner: Pokemon? = null
+}

@@ -2,6 +2,7 @@ package org.zenika.api.controller
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import org.zenika.api.entity.BattleEntity
 import org.zenika.api.service.PokemonService
 import org.zenika.core.Battle
 import org.zenika.core.Pokemon
@@ -25,9 +26,9 @@ class PokemonsController(val pokemonService: PokemonService) {
     fun getPokemonTypes() : List<String> = pokemonService.getAllPokemonTypes()
 
     @GetMapping("/{idPokemon1}/vs/{idPokemon2}")
-    fun fight(@PathVariable idPokemon1: String, @PathVariable idPokemon2: String): ResponseEntity<Battle> =
+    fun fight(@PathVariable idPokemon1: String, @PathVariable idPokemon2: String): ResponseEntity<BattleEntity> =
             pokemonService.fight(idPokemon1, idPokemon2).wrap()
 
     @GetMapping("/battle/{id}")
-    fun getBattle(@PathVariable id: String): ResponseEntity<Battle> = pokemonService.getBattle(id).wrap()
+    fun getBattle(@PathVariable id: String): ResponseEntity<BattleEntity> = pokemonService.getBattle(id).wrap()
 }

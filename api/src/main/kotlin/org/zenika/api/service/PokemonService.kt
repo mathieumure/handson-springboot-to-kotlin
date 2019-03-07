@@ -3,6 +3,7 @@ package org.zenika.api.service
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.zenika.api.client.ArenaApi
+import org.zenika.api.entity.BattleEntity
 import org.zenika.core.Battle
 import org.zenika.core.Pokemon
 import org.zenika.api.repository.PokemonRepository
@@ -18,7 +19,7 @@ class PokemonService(val pokemonRepository: PokemonRepository, val arenaApi: Are
 
     fun getAllPokemonTypes(): List<String> = getAllPokemon().flatMap { it.types }.distinct()
 
-    fun fight(idPokemon1: String, idPokemon2: String): Battle? {
+    fun fight(idPokemon1: String, idPokemon2: String): BattleEntity? {
         val pokemon1 = getPokemonByIdOrName(idPokemon1)
         val pokemon2 = getPokemonByIdOrName(idPokemon2)
         if (pokemon1 == null && pokemon2 == null) {
