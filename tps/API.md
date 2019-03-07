@@ -1,4 +1,4 @@
-# The API Module
+# Le module API
 
 C'est parti, vous allez à présent porter votre premier module en Kotlin: `api`.
 
@@ -83,18 +83,21 @@ Avant de commencer, renommer le dossier `src/main/java` en `src/main/kotlin`.
 
 Ensuite renommer le fichier `ApiApplication.java` en `ApiApplication.kt`.
 
-Changer la syntaxe de class Java en class Kotlin 
+Changer la syntaxe de class Java en class Kotlin:
 
 ```kotlin
 @OneAnnotation
 class MyClass() {}
 ```
+::: tip
+Pensez à supprimer tout ce qui est inutile comme les point-virgules, les constructeurs vides et les block vides.
+:::
 
-> Pensez à supprimer tout ce qui est inutile comme les `;`, les constructeurs vides et les block vides
+::: tip
+En Kotlin, le main n'est pas à mettre dans une classe.
+:::
 
-> En Kotlin, le main n'est pas à mettre dans une classe
-
-Changer la méthode main pour utiliser spring boot
+Changer la méthode main pour utiliser spring boot:
 
 ```kotlin
 import org.springframework.boot.runApplication
@@ -104,25 +107,55 @@ fun main(args: Array<String>) {
 }
 ```
 
-Kotlin compilant en class, l'interoparabilité avec Java est complète. Vérifier que votre application démarre en redémarrant.
+Kotlin compilant en class, l'interoparabilité avec Java est complète. Vérifier que votre application démarre.
 
 ## Controller
 
 Au tour du package `controller`, renommer le fichier `PokemonsController.java` en `PokemonsController.kt`.
 
-Réécriver ce fichier en kotlin avec les contraintes suivantes:
+Réécriver ce fichier en kotlin. Ce fichier ne doit pas contenir de block de fonction, uniquement des fonctions inlines, `let` et l'opérateur elvis.
 
-- Pas de block de fonction, uniquement des fonctions inline et `let`
-- Utiliser une extension `wrap` pour retourner `ResponseEntity.ok(it)` et `ResponseEntity.notFound().build()`, si votre objet est présent our pas
+::: tip Bonus
+:bulb: Utiliser une extension `wrap` pour retourner `ResponseEntity.ok(it)` si le service vous retourne un objet et `ResponseEntity.notFound().build()` sinon.
+:::
 
-## Repository
+## Repository & Client
+
+Réécrire les fichiers `PokemonRepository` et `ArenaApi` en Kotlin en utilisant une interface Kotlin.
+
+## Configuration
+
+Réécrire le fichier `ApiClientConfiguration` en kotlin avec les contraintes suivantes:
+- Pas de block de fonction, uniquement des fonctions inline
+- Utiliser la référence de classe Java à partir de la [Kclass](https://kotlinlang.org/docs/reference/reflection.html#class-references) de AreneApi
+
+## Entités
+
+Réécrire le fichier `BattleEntity` en tant que data class Kotlin.
+Pour le fichier `Pokemon` utiliser une classe Kotlin qui aura:
+- un constructeur par défaut non vide
+- la fonction `toPokemon` qui utilisera la fonction `apply` fournie par Kotlin
 
 ## Service
 
-## client
+Pour finir avec ce module, il nous reste à porter `PokemonService`.
 
-## configuration
+Pour cela:
+- Injecter l'ensemble des dépendances dans le constructeur par défaut
+- Réécrire la fonction `getAllPokemon` en fonction inline
+- Réécrire la fonction `getPokemonByIdOrName` en fonction inline à l'aide d'un opérateur elvis
+- Réécrire la fonction `getAllPokemonTypes` en fonction inline
+- Réécrire la fonction `fight`
+- Réécrire la fonction `getBattle` en fonction inline
 
-## entités
+## Vérification
 
+Vérifier que l'ensemble de l'API fonctionne en éxécutant les commandes suivantes:
 
+```bash
+curl http://localhost:8080/pokemons
+curl http://localhost:8080/pokemons/6
+curl http://localhost:8080/pokemons/types
+curl http://localhost:8080/pokemons/6/vs/3
+curl http://localhost:8080/pokemons/battle/<ID-BATTLE>
+```

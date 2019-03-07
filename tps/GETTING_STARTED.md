@@ -7,7 +7,7 @@ L'application de base est une application maven, composée de plusieurs modules:
 - `core`: le module contenant les entités et les utilitaires métiers
 - `fetcher`: un module **Spring boot** de type console qui permet de récupérer les données depuis la [pokeapi](https://pokeapi.co/) et de générer un fichier de script sql
 - `api`: un module **Spring boot** web avec une base de donnée JPA qui expose une API qui permet de lister les pokemons et de les faire s'affronter. L'affrontement est réalisé par un autre module
-- `arena`: un module **Spring boot** web avec une base de donnée Mongo qui expose une API qui permet de faire s'affronter les Pokemon tour par tour lors d'un batch.
+- `arena`: un module **Spring boot** web avec une base de donnée Mongo qui expose une API qui permet de faire s'affronter les Pokemon tour par tour lors d'un batch
 
 
 ## Récupération du projet
@@ -20,30 +20,30 @@ Pour bien démarrer, assurez-vous d'avoir les outils suivant d'installés:
 - Votre IDE préféré
 
 
-Ensuite télécharger le projet depuis github
+Ensuite télécharger le projet depuis github:
 
-```sh
+```bash
 git clone https://github.com/mathieumure/handson-springboot-to-kotlin.git
 ```
 
 ## Lancement du projet
 
-Ouvrez le projet dans votre IDE et assurez-vous que celui-ci fonctionne en lançant les modules `api` et `core`.
+Ouvrer le projet dans votre IDE et assurez-vous que celui-ci fonctionne en lançant les modules `api` et `core`.
 
-Récupérez la liste des pokemons
+Récupérer la liste des pokemons:
 
-```sh
+```bash
 curl http://localhost:8080/pokemons
 ```
 
-Lancez un combat
+Lancer un combat:
 
-```sh
+```bash
 curl http://localhost:8080/pokemons/fight/3/vs/6
 ```
 
-et vérifiez le statut de celui-ci
+et vérifier le statut de celui-ci:
 
-```sh
+```bash
 curl http://localhost:8080/pokemons/battle/<THE ID RETURNED PREVIOUSLY>
 ```

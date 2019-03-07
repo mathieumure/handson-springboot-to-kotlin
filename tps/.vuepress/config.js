@@ -3,6 +3,7 @@ module.exports = {
     description: "Migration d'un projet spring boot de java vers Kotlin",
     base: "/handson-springboot-to-kotlin/",
     port: 3000,
+    dest: '../docs',
     themeConfig: {
         // Assumes GitHub. Can also be a full GitLab url.
         repo: 'mathieumure/handson-springboot-to-kotlin',
@@ -14,7 +15,10 @@ module.exports = {
         docsDir: 'tps',
         sidebar: [
             '/GETTING_STARTED',
-            '/API'
+            '/API',
+            '/ARENA',
+            '/FETCHER',
+            '/CORE',
         ]
     }
 };
