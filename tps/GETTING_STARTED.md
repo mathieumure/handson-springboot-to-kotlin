@@ -28,7 +28,12 @@ git clone https://github.com/mathieumure/handson-springboot-to-kotlin.git
 
 ## Lancement du projet
 
-Ouvrer le projet dans votre IDE et assurez-vous que celui-ci fonctionne en lançant les modules `api` et `core`.
+Ouvrer le projet dans votre IDE et assurez-vous que celui-ci fonctionne en lançant les modules `api` et `arena`.
+
+```bash
+cd api/
+mvn spring-boot:run
+```
 
 Récupérer la liste des pokemons:
 

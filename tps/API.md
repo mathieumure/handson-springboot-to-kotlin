@@ -10,6 +10,21 @@ Pour pouvoir compiler des fichiers Kotlin, vous aller avoir besoin d'ajouter de 
 - `kotlin-reflect` la bibliothèque Kotlin de réflection (obligatoire pour pouvoir utiliser Spring 5)
 - `jackson-module-kotlin` pour ajouter le support de JSON des classes Kotlin
 
+```xml
+<dependency>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-stdlib-jdk8</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-reflect</artifactId>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.module</groupId>
+    <artifactId>jackson-module-kotlin</artifactId>
+</dependency>
+```
+
 Il reste ensuite à configurer le build maven pour compiler nos fichiers `.kt` en fichier `.class`, pour cela on va avoir besoin du plugin `kotlin-maven-plugin` et on va le configurer avec:
 
 - kotlin-maven-allopen plugin pour ouvrir les classes Spring (les classes sont finales par défaut en Kotlin)
@@ -113,7 +128,21 @@ Kotlin compilant en class, l'interoparabilité avec Java est complète. Vérifie
 
 Au tour du package `controller`, renommer le fichier `PokemonsController.java` en `PokemonsController.kt`.
 
-Réécriver ce fichier en kotlin. Ce fichier ne doit pas contenir de block de fonction, uniquement des fonctions inlines, `let` et l'opérateur elvis.
+Réécriver ce fichier en kotlin. Ce fichier ne doit pas contenir de block de fonction, uniquement des fonctions Single-Expression, `let` et l'opérateur elvis.
+
+::: tip Single-Expression functions
+En kotlin il est courant d'avoir des fonctions sans body. Par exemple:
+```kotlin
+fun provideSomething(): Something {
+  return Toto.makeIt()
+}
+```
+
+Va plutôt s'écrire en une seule ligne
+```kotlin
+fun provideSomething() = Toto.makeIt()
+```
+:::
 
 ::: tip Bonus
 :bulb: Utiliser une extension `wrap` pour retourner `ResponseEntity.ok(it)` si le service vous retourne un objet et `ResponseEntity.notFound().build()` sinon.
@@ -126,7 +155,7 @@ Réécrire les fichiers `PokemonRepository` et `ArenaApi` en Kotlin en utilisant
 ## Configuration
 
 Réécrire le fichier `ApiClientConfiguration` en kotlin avec les contraintes suivantes:
-- Pas de block de fonction, uniquement des fonctions inline
+- Pas de block de fonction, uniquement des fonctions Single-Expression
 - Utiliser la référence de classe Java à partir de la [Kclass](https://kotlinlang.org/docs/reference/reflection.html#class-references) de AreneApi
 
 ## Entités
@@ -142,11 +171,11 @@ Pour finir avec ce module, il nous reste à porter `PokemonService`.
 
 Pour cela:
 - Injecter l'ensemble des dépendances dans le constructeur par défaut
-- Réécrire la fonction `getAllPokemon` en fonction inline
-- Réécrire la fonction `getPokemonByIdOrName` en fonction inline à l'aide d'un opérateur elvis
-- Réécrire la fonction `getAllPokemonTypes` en fonction inline
+- Réécrire la fonction `getAllPokemon` en fonction Single-Expression
+- Réécrire la fonction `getPokemonByIdOrName` en fonction Single-Expression à l'aide d'un opérateur elvis
+- Réécrire la fonction `getAllPokemonTypes` en fonction Single-Expression
 - Réécrire la fonction `fight`
-- Réécrire la fonction `getBattle` en fonction inline
+- Réécrire la fonction `getBattle` en fonction Single-Expression
 
 ## Vérification
 

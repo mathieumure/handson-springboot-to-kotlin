@@ -8,7 +8,7 @@ Comme précédemment, ajouter les plugins et les dépendances nécessaires à ma
 
 Renommer le dossier `src/main/java` en `src/main/kotlin`.
 
-Porter les fichiers `ArenaApplication`, `FightController`, `BattleRepository`, `ArenaService` et `BattleEntity` en Kotlin en utilisant au maximum des fonctions inlines.
+Porter les fichiers `ArenaApplication`, `FightController`, `BattleRepository`, `ArenaService` et `BattleEntity` en Kotlin en utilisant au maximum des fonctions Single-Expression.
 
 ## FightRunner
 
