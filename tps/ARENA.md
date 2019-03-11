@@ -14,7 +14,7 @@ Porter les fichiers `ArenaApplication`, `FightController`, `BattleRepository`, `
 
 Porter le fichier `FightRunner` en Kotlin:
 - Transformer le logger en propriété privée ou en tant que `companion`
-- Utiliser l'opérateur `when` pour supprimer les `if
+- Utiliser l'opérateur `when` pour supprimer les `if`
 
 ## Vérification
 
