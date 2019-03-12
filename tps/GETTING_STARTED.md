@@ -31,6 +31,7 @@ git clone https://github.com/mathieumure/handson-springboot-to-kotlin.git
 Ouvrer le projet dans votre IDE et assurez-vous que celui-ci fonctionne en lançant les modules `api` et `arena`.
 
 ```bash
+mvn clean install
 cd api/
 mvn spring-boot:run
 ```
