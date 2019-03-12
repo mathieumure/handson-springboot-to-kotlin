@@ -33,3 +33,5 @@ FightService est une classe utilitaire, qui n'a que des méthodes statiques. Tra
 ## PokemonUtils
 
 Pour finir, si vous en avez le courage, transformer la classe utilitaire `PokemonUtils` en Kotlin.
+
+Si vous n'avez pas le courage, utiliser `CTRL + ALT + SHIFT + K` pour demander à IntelliJ de le faire pour vous.
