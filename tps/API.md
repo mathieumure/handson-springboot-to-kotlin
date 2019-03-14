@@ -1,108 +1,39 @@
 # Le module API
 
-C'est parti, vous allez à présent porter votre premier module en Kotlin: `api`.
+C'est parti, vous allez à présent porter votre premier module en Kotlin : `api`.
 
 ## Maven
 
-Pour pouvoir compiler des fichiers Kotlin, vous aller avoir besoin d'ajouter de nouvelles dépendances à votre module maven:
-
-- `kotlin-stdlib-jdk8` Kotlin à proprement parler mais pour les JDK > 8
-- `kotlin-reflect` la bibliothèque Kotlin de réflection (obligatoire pour pouvoir utiliser Spring 5)
-- `jackson-module-kotlin` pour ajouter le support de JSON des classes Kotlin
+Indiquez au module `api` que vous souhaitez utiliser les dépendances indiquées dans le POM parent.
 
 ```xml
-<dependency>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <artifactId>kotlin-stdlib-jdk8</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <artifactId>kotlin-reflect</artifactId>
-</dependency>
-<dependency>
-    <groupId>com.fasterxml.jackson.module</groupId>
-    <artifactId>jackson-module-kotlin</artifactId>
-</dependency>
-```
-
-Il reste ensuite à configurer le build maven pour compiler nos fichiers `.kt` en fichier `.class`, pour cela on va avoir besoin du plugin `kotlin-maven-plugin` et on va le configurer avec:
-
-- kotlin-maven-allopen plugin pour ouvrir les classes Spring (les classes sont finales par défaut en Kotlin)
-- kotlin-maven-noarg plugin pour ajouter automatiquement les constructeurs vide pour les entités JPA
-
-
-```xml
-<plugin>
-    <artifactId>kotlin-maven-plugin</artifactId>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <configuration>
-        <args>
-            <arg>-Xjsr305=strict</arg>
-        </args>
-        <compilerPlugins>
-            <plugin>spring</plugin>
-            <plugin>jpa</plugin>
-            <plugin>all-open</plugin>
-        </compilerPlugins>
-        <pluginOptions>
-            <option>all-open:annotation=javax.persistence.Entity</option>
-        </pluginOptions>
-    </configuration>
+<project>
     <dependencies>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-maven-allopen</artifactId>
-            <version>${kotlin.version}</version>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-maven-noarg</artifactId>
-            <version>${kotlin.version}</version>
+            <artifactId>kotlin-reflect</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
         </dependency>
     </dependencies>
-    <executions>
-        <execution>
-            <id>kapt</id>
-            <goals>
-                <goal>kapt</goal>
-            </goals>
-            <configuration>
-                <sourceDirs>
-                    <sourceDir>src/main/kotlin</sourceDir>
-                </sourceDirs>
-                <annotationProcessorPaths>
-                    <annotationProcessorPath>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-configuration-processor</artifactId>
-                        <version>${project.parent.version}</version>
-                    </annotationProcessorPath>
-                </annotationProcessorPaths>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
+</project>
 ```
-
-Ajouter également la configuration suivante pour basculer dans le monde Kotlin
-
-```xml
-<build>
-    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-    ...
-</build>
-``` 
 
 ## ApiApplication
 
-Avant de commencer, renommer le dossier `src/main/java` en `src/main/kotlin`.
-
-Ensuite renommer le fichier `ApiApplication.java` en `ApiApplication.kt`.
+Commencez par le plus petit fichier : renommer le fichier `ApiApplication.java` en `ApiApplication.kt`.
 
 Changer la syntaxe de class Java en class Kotlin:
 
 ```kotlin
 @OneAnnotation
-class MyClass() {}
+class MyClass()
 ```
 ::: tip
 Pensez à supprimer tout ce qui est inutile comme les point-virgules, les constructeurs vides et les block vides.
