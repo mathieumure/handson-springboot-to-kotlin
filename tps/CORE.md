@@ -1,37 +1,58 @@
 # Le module Core
 
+## On ne vous explique plus par où commencer
+
 Le module `core` n'est pas un module lié à Spring boot mais nous avons quand même besoin de configurer maven.
 
-Ajouter les dépendances et plugins nécessaires.
+Indiquez à ce module que vous souhaitez encore une fois utiliser les dépendances indiquées dans le POM parent.
+
+```xml
+<project>
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-reflect</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
+        </dependency>
+    </dependencies>
+</project>
+```
 
 ## enum
 
-Porter `BattleStatus` et `PokemonType` en enum Kotlin.
+Portez `BattleStatus` et `PokemonType` en enum Kotlin.
 
 ## Pokemon
 
-Porter `Pokemon` en classe ouverte à l'héritage. Cette classe doit posséder un constructeur par défaut avec une liste de champs tous optionnels.
+Portez `Pokemon` en classe ouverte à l'héritage. Cette classe doit posséder un constructeur par défaut avec une liste de champs tous optionnels.
 
-Ajouter un second constructeur qui prend un Pokemon en paramètre et utilisera la fonction `apply` pour mettre à jour ses propriétés.
+Ajoutez un second constructeur qui prend un Pokemon en paramètre et utilisera la fonction `apply` pour mettre à jour ses propriétés.
 
 ## FightingPokemon
 
-Transformer la classe `FightingPokemon` en Kotlin. Cette classe n'a pas besoin de constructeur par défaut.
+Transformez la classe `FightingPokemon` en Kotlin. Cette classe n'a pas besoin de constructeur par défaut.
 
-Transformer `isKO` en propriété en lecture seule grâce au mot clé `get`.
+Transformez `isKO` en propriété en lecture seule grâce au mot clé `get`.
 
 ## Battle
 
-Transformer la class `Battle` en Kotlin. Cette classe doit être ouverte et ne doit pas avoir de constructeur par défaut.
+Transformez la class `Battle` en Kotlin. Cette classe doit être ouverte et ne doit pas avoir de constructeur par défaut.
 
-Transformer les méthodes `getStarter()`, `getEnder()` et `getBattleStatus()` en propriété en lecture seule.
+Transformez les méthodes `getStarter()`, `getEnder()` et `getBattleStatus()` en propriété en lecture seule.
 
 ## FightService
 
-FightService est une classe utilitaire, qui n'a que des méthodes statiques. Transformer donc ce fichier en `object`.
+FightService est une classe utilitaire, qui n'a que des méthodes statiques. Transformez donc ce fichier en `object`.
 
 ## PokemonUtils
 
-Pour finir, si vous en avez le courage, transformer la classe utilitaire `PokemonUtils` en Kotlin.
+Pour finir, si vous en avez le courage, transformez la classe utilitaire `PokemonUtils` en Kotlin.
 
-Si vous n'avez pas le courage, utiliser `CTRL + ALT + SHIFT + K` pour demander à IntelliJ de le faire pour vous.
+Si vous n'avez pas le courage, utilisez `CTRL + ALT + SHIFT + K` pour demander à IntelliJ de le faire pour vous.
