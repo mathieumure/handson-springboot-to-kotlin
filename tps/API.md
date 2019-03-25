@@ -1,108 +1,54 @@
 # Le module API
 
-C'est parti, vous allez à présent porter votre premier module en Kotlin: `api`.
+C'est parti, vous allez à présent porter votre premier module en Kotlin : `api`.
 
 ## Maven
 
-Pour pouvoir compiler des fichiers Kotlin, vous aller avoir besoin d'ajouter de nouvelles dépendances à votre module maven:
-
-- `kotlin-stdlib-jdk8` Kotlin à proprement parler mais pour les JDK > 8
-- `kotlin-reflect` la bibliothèque Kotlin de réflection (obligatoire pour pouvoir utiliser Spring 5)
-- `jackson-module-kotlin` pour ajouter le support de JSON des classes Kotlin
+Indiquez au module `api` que vous souhaitez utiliser les dépendances indiquées dans le POM parent.
 
 ```xml
-<dependency>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <artifactId>kotlin-stdlib-jdk8</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <artifactId>kotlin-reflect</artifactId>
-</dependency>
-<dependency>
-    <groupId>com.fasterxml.jackson.module</groupId>
-    <artifactId>jackson-module-kotlin</artifactId>
-</dependency>
-```
-
-Il reste ensuite à configurer le build maven pour compiler nos fichiers `.kt` en fichier `.class`, pour cela on va avoir besoin du plugin `kotlin-maven-plugin` et on va le configurer avec:
-
-- kotlin-maven-allopen plugin pour ouvrir les classes Spring (les classes sont finales par défaut en Kotlin)
-- kotlin-maven-noarg plugin pour ajouter automatiquement les constructeurs vide pour les entités JPA
-
-
-```xml
-<plugin>
-    <artifactId>kotlin-maven-plugin</artifactId>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <configuration>
-        <args>
-            <arg>-Xjsr305=strict</arg>
-        </args>
-        <compilerPlugins>
-            <plugin>spring</plugin>
-            <plugin>jpa</plugin>
-            <plugin>all-open</plugin>
-        </compilerPlugins>
-        <pluginOptions>
-            <option>all-open:annotation=javax.persistence.Entity</option>
-        </pluginOptions>
-    </configuration>
+<project>
     <dependencies>
+        ...
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-maven-allopen</artifactId>
-            <version>${kotlin.version}</version>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-maven-noarg</artifactId>
-            <version>${kotlin.version}</version>
+            <artifactId>kotlin-reflect</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
         </dependency>
     </dependencies>
-    <executions>
-        <execution>
-            <id>kapt</id>
-            <goals>
-                <goal>kapt</goal>
-            </goals>
-            <configuration>
-                <sourceDirs>
-                    <sourceDir>src/main/kotlin</sourceDir>
-                </sourceDirs>
-                <annotationProcessorPaths>
-                    <annotationProcessorPath>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-configuration-processor</artifactId>
-                        <version>${project.parent.version}</version>
-                    </annotationProcessorPath>
-                </annotationProcessorPaths>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
+</project>
 ```
 
-Ajouter également la configuration suivante pour basculer dans le monde Kotlin
+et ajoutez le plugin configuré dans le parent
 
 ```xml
 <build>
-    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-    ...
+    <plugins>
+        ...
+        <plugin>
+            <artifactId>kotlin-maven-plugin</artifactId>
+            <groupId>org.jetbrains.kotlin</groupId>
+        </plugin>
+    </plugins>
 </build>
-``` 
+```
 
 ## ApiApplication
 
-Avant de commencer, renommer le dossier `src/main/java` en `src/main/kotlin`.
+Commencez par le plus petit fichier : renommer le fichier `ApiApplication.java` en `ApiApplication.kt`.
 
-Ensuite renommer le fichier `ApiApplication.java` en `ApiApplication.kt`.
-
-Changer la syntaxe de class Java en class Kotlin:
+Changer la syntaxe de class Java en class Kotlin :
 
 ```kotlin
 @OneAnnotation
-class MyClass() {}
+class MyClass()
 ```
 ::: tip
 Pensez à supprimer tout ce qui est inutile comme les point-virgules, les constructeurs vides et les block vides.
@@ -112,7 +58,7 @@ Pensez à supprimer tout ce qui est inutile comme les point-virgules, les constr
 En Kotlin, le main n'est pas à mettre dans une classe.
 :::
 
-Changer la méthode main pour utiliser spring boot:
+Changer la méthode main pour utiliser spring boot :
 
 ```kotlin
 import org.springframework.boot.runApplication
@@ -131,7 +77,7 @@ Au tour du package `controller`, renommer le fichier `PokemonsController.java` e
 Réécriver ce fichier en kotlin. Ce fichier ne doit pas contenir de block de fonction, uniquement des fonctions Single-Expression, `let` et l'opérateur elvis.
 
 ::: tip Single-Expression functions
-En kotlin il est courant d'avoir des fonctions sans body. Par exemple:
+En kotlin il est courant d'avoir des fonctions sans body. Par exemple :
 ```kotlin
 fun provideSomething(): Something {
   return Toto.makeIt()
@@ -154,14 +100,14 @@ Réécrire les fichiers `PokemonRepository` et `ArenaApi` en Kotlin en utilisant
 
 ## Configuration
 
-Réécrire le fichier `ApiClientConfiguration` en kotlin avec les contraintes suivantes:
+Réécrire le fichier `ApiClientConfiguration` en kotlin avec les contraintes suivantes :
 - Pas de block de fonction, uniquement des fonctions Single-Expression
 - Utiliser la référence de classe Java à partir de la [Kclass](https://kotlinlang.org/docs/reference/reflection.html#class-references) de AreneApi
 
 ## Entités
 
 Réécrire le fichier `BattleEntity` en tant que data class Kotlin.
-Pour le fichier `Pokemon` utiliser une classe Kotlin qui aura:
+Pour le fichier `Pokemon` utiliser une classe Kotlin qui aura :
 - un constructeur par défaut non vide
 - la fonction `toPokemon` qui utilisera la fonction `apply` fournie par Kotlin
 
@@ -169,7 +115,7 @@ Pour le fichier `Pokemon` utiliser une classe Kotlin qui aura:
 
 Pour finir avec ce module, il nous reste à porter `PokemonService`.
 
-Pour cela:
+Pour cela :
 - Injecter l'ensemble des dépendances dans le constructeur par défaut
 - Réécrire la fonction `getAllPokemon` en fonction Single-Expression
 - Réécrire la fonction `getPokemonByIdOrName` en fonction Single-Expression à l'aide d'un opérateur elvis
@@ -179,7 +125,7 @@ Pour cela:
 
 ## Vérification
 
-Vérifier que l'ensemble de l'API fonctionne en éxécutant les commandes suivantes:
+Vérifier que l'ensemble de l'API fonctionne en éxécutant les commandes suivantes :
 
 ```bash
 curl http://localhost:8080/pokemons

@@ -15,6 +15,7 @@ module.exports = {
         docsDir: 'tps',
         sidebar: [
             '/GETTING_STARTED',
+            '/CONFIG_KOTLIN',
             '/API',
             '/ARENA',
             '/FETCHER',
