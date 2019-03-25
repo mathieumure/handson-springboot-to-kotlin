@@ -25,6 +25,20 @@ Indiquez au module `fetcher` que vous souhaitez utiliser les dépendances indiqu
 </project>
 ```
 
+et ajoutez le plugin configuré dans le parent
+
+```xml
+<build>
+    <plugins>
+        ...
+        <plugin>
+            <artifactId>kotlin-maven-plugin</artifactId>
+            <groupId>org.jetbrains.kotlin</groupId>
+        </plugin>
+    </plugins>
+</build>
+```
+
 ## Le chemin continue
 
 Portez l'interface `Pokeapi`.

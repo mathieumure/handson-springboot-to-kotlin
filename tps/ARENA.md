@@ -25,6 +25,21 @@ Indiquez au module `arena` que vous souhaitez utiliser les dépendances indiqué
 </project>
 ```
 
+
+et ajoutez le plugin configuré dans le parent
+
+```xml
+<build>
+    <plugins>
+        ...
+        <plugin>
+            <artifactId>kotlin-maven-plugin</artifactId>
+            <groupId>org.jetbrains.kotlin</groupId>
+        </plugin>
+    </plugins>
+</build>
+```
+
 # Premièrement
 
 Portez les fichiers `ArenaApplication`, `FightController`, `BattleRepository`, `ArenaService` et `BattleEntity` en Kotlin en utilisant au maximum des fonctions Single-Expression.

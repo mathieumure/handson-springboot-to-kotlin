@@ -28,11 +28,23 @@ git clone https://github.com/mathieumure/handson-springboot-to-kotlin.git
 
 ## Lancement du projet
 
-Ouvrez le projet dans votre IDE et assurez-vous que celui-ci fonctionne en lançant les modules `api` et `arena`.
+Ouvrez le projet dans votre IDE et assurez-vous que celui-ci build :
 
 ```bash
 mvn clean install
+```
+
+et que le module `api` démarre :
+
+```bash
 cd api/
+mvn spring-boot:run
+```
+
+ainsi que le module `arena` :
+
+```bash
+cd arena/
 mvn spring-boot:run
 ```
 
@@ -45,7 +57,7 @@ curl http://localhost:8080/pokemons
 Lancez un combat :
 
 ```bash
-curl http://localhost:8080/pokemons/fight/3/vs/6
+curl http://localhost:8080/pokemons/3/vs/6
 ```
 
 et vérifiez le statut de celui-ci :

@@ -25,6 +25,20 @@ Indiquez à ce module que vous souhaitez encore une fois utiliser les dépendanc
 </project>
 ```
 
+et ajoutez le plugin configuré dans le parent
+
+```xml
+<build>
+    <plugins>
+        ...
+        <plugin>
+            <artifactId>kotlin-maven-plugin</artifactId>
+            <groupId>org.jetbrains.kotlin</groupId>
+        </plugin>
+    </plugins>
+</build>
+```
+
 ## enum
 
 Portez `BattleStatus` et `PokemonType` en enum Kotlin.

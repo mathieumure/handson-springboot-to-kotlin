@@ -9,6 +9,7 @@ Indiquez au module `api` que vous souhaitez utiliser les dépendances indiquées
 ```xml
 <project>
     <dependencies>
+        ...
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
@@ -23,6 +24,20 @@ Indiquez au module `api` que vous souhaitez utiliser les dépendances indiquées
         </dependency>
     </dependencies>
 </project>
+```
+
+et ajoutez le plugin configuré dans le parent
+
+```xml
+<build>
+    <plugins>
+        ...
+        <plugin>
+            <artifactId>kotlin-maven-plugin</artifactId>
+            <groupId>org.jetbrains.kotlin</groupId>
+        </plugin>
+    </plugins>
+</build>
 ```
 
 ## ApiApplication

@@ -21,6 +21,10 @@
         <module>arena</module>
     </modules>
 
+    <properties>
+        <kotlin.version>1.3.21</kotlin.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -58,11 +62,6 @@
                 <plugin>
                     <groupId>org.jetbrains.kotlin</groupId>
                     <artifactId>kotlin-maven-plugin</artifactId>
-                    <version>${kotlin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.jetbrains.kotlin</groupId>
-                    <artifactId>kotlin-maven-noarg</artifactId>
                     <version>${kotlin.version}</version>
                 </plugin>
             </plugins>
