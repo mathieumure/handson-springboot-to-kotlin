@@ -125,12 +125,4 @@ Pour cela :
 
 ## Vérification
 
-Vérifier que l'ensemble de l'API fonctionne en éxécutant les commandes suivantes :
-
-```bash
-curl http://localhost:8080/pokemons
-curl http://localhost:8080/pokemons/6
-curl http://localhost:8080/pokemons/types
-curl http://localhost:8080/pokemons/6/vs/3
-curl http://localhost:8080/pokemons/battle/<ID-BATTLE>
-```
+Vérifier que l'ensemble de l'API fonctionne en lançant un combat depuis [http://localhost:8080](http://localhost:8080).

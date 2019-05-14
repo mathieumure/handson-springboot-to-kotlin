@@ -48,20 +48,4 @@ cd arena/
 mvn spring-boot:run
 ```
 
-Récupérez la liste des pokemons :
-
-```bash
-curl http://localhost:8080/pokemons
-```
-
-Lancez un combat :
-
-```bash
-curl http://localhost:8080/pokemons/3/vs/6
-```
-
-et vérifiez le statut de celui-ci :
-
-```bash
-curl http://localhost:8080/pokemons/battle/<THE ID RETURNED PREVIOUSLY>
-```
+Rendez-vous sur [http://localhost:8080](http://localhost:8080) pour afficher le pokedex et lancer un combat de pokemons.
