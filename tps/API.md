@@ -42,6 +42,10 @@ et ajoutez le plugin configuré dans le parent
 
 ## ApiApplication
 
+::: warning Attention
+N'hésitez pas à commenter vos tests s'ils ne passent pas le temps de la migration vers Kotlin.
+:::
+
 Commencez par le plus petit fichier : renommer le fichier `ApiApplication.java` en `ApiApplication.kt`.
 
 Changer la syntaxe de class Java en class Kotlin :

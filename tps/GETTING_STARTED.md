@@ -49,3 +49,5 @@ mvn spring-boot:run
 ```
 
 Rendez-vous sur [http://localhost:8080](http://localhost:8080) pour afficher le pokedex et lancer un combat de pokemons.
+
+Lancez également les tests unitaires du module API et vérfiez qu'ils fonctionnent.
