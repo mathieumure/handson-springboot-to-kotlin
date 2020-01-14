@@ -102,3 +102,5 @@ Déclarez les dépendances partagées dans le **POM parent** :
     </dependencyManagement>
 </project>
 ```
+
+Vérifiez que votre configuration compile en redémarrant vos serveurs en faisant s'affronter deux pokemons.

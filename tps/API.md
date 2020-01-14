@@ -4,7 +4,7 @@ C'est parti, vous allez à présent porter votre premier module en Kotlin : `api
 
 ## Maven
 
-Indiquez au module `api` que vous souhaitez utiliser les dépendances indiquées dans le POM parent.
+Ajoutez au pom du module `api` les dépendances précédemment ajoutées dans le POM parent.
 
 ```xml
 <project>
@@ -26,7 +26,7 @@ Indiquez au module `api` que vous souhaitez utiliser les dépendances indiquées
 </project>
 ```
 
-et ajoutez le plugin configuré dans le parent
+et ajoutez également le plugin précédemment configuré dans le pom parent
 
 ```xml
 <build>
@@ -98,9 +98,15 @@ fun provideSomething() = Toto.makeIt()
 :bulb: Utiliser une extension `wrap` pour retourner `ResponseEntity.ok(it)` si le service vous retourne un objet et `ResponseEntity.notFound().build()` sinon.
 :::
 
+Après avoir vérifié que votre serveur redémarre toujours, et que vos pokemons s'affrontent bien, convertissez le fichier `ForwardController` en kotlin.
+
 ## Repository & Client
 
 Réécrire les fichiers `PokemonRepository` et `ArenaApi` en Kotlin en utilisant une interface Kotlin.
+
+::: tip List
+En Kotlin, on préfère l'immutabilité. `java.util.List` n'étant pas immutable, préférez l'utlisation de `kotlin.collections.List` (immutable) ou alors `kotlin.collections.MutableList` (mutable)
+:::
 
 ## Configuration
 
