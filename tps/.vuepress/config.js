@@ -18,8 +18,8 @@ module.exports = {
             '/CONFIG_KOTLIN',
             '/API',
             '/ARENA',
-            '/FETCHER',
             '/CORE',
+            '/FETCHER',
         ]
     }
 };
