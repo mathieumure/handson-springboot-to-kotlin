@@ -94,6 +94,22 @@ fun provideSomething() = Toto.makeIt()
 ```
 :::
 
+::: tip let et elvis
+Les scoping function (let, also, apply, etc.), et l'opérateur elvis sont souvent utilisés conjointement pour gérer les valeurs nullable.
+
+[Scope functions](https://kotlinlang.org/docs/reference/scope-functions.html)
+
+```kotlin
+valeurNullable?.let { /*code exécuté si valeurNullable n'EST PAS nulle*/ }
+```
+
+[Elvis](https://kotlinlang.org/docs/reference/null-safety.html#elvis-operator)
+
+```kotlin
+valeurNullable ?; "valeur de remplacement en cas de null"
+```
+:::
+
 ::: tip Bonus
 :bulb: Utiliser une extension `wrap` pour retourner `ResponseEntity.ok(it)` si le service vous retourne un objet et `ResponseEntity.notFound().build()` sinon.
 :::
